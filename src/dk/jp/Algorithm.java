@@ -8,7 +8,7 @@ public class Algorithm {
 
         Integer[][] matrix = new Integer[100][100];
         int row = 0;
-        int column =0;
+        int column = 0;
 
         for(Object el: articles) {
             if(el instanceof Integer) {
@@ -16,15 +16,18 @@ public class Algorithm {
                 row++;
             } else {
                 LinkedHashMap<String, List<?>> area = (LinkedHashMap) el;
-                Iterator iterator = area.keySet().iterator();
-                while(iterator.hasNext()){
-                    List<?> colList = area.get(iterator.next());
-                    row = 0;
-                    column ++;
-                    for(Object item : colList){
-                        if(item instanceof Integer){
-                            matrix[row][column] = (Integer) item;
-                            row++;
+                for(Object o : area.keySet()) {
+                    List<?> colList = area.get(o);
+                    int tmpRow = 0;
+
+                    column++;
+                    for(Object item : colList) {
+                        if(item instanceof Integer) {
+                            matrix[tmpRow][column] = (Integer) item;
+                            tmpRow++;
+                            if(row < tmpRow) {
+                                row = tmpRow;
+                            }
                         }
                     }
                 }
