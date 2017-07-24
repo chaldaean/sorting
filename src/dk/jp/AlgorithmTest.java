@@ -28,7 +28,7 @@ public class AlgorithmTest {
 
         List<Integer> result = algorithm.sort(articles);
 
-        for(int i = 0; i<articles.size(); i++) {
+        for(int i = 0; i < articles.size(); i++) {
             Assert.assertEquals(i, result.get(i).intValue());
         }
     }
@@ -47,7 +47,7 @@ public class AlgorithmTest {
 
         List<Integer> result = algorithm.sort(articles);
 
-        for(int i = 0; i<result.size(); i++) {
+        for(int i = 0; i < result.size(); i++) {
             Assert.assertEquals(i, result.get(i).intValue());
         }
     }
@@ -69,7 +69,7 @@ public class AlgorithmTest {
 
         List<Integer> result = algorithm.sort(articles);
 
-        for(int i = 0; i<result.size(); i++) {
+        for(int i = 0; i < result.size(); i++) {
             Assert.assertEquals(i, result.get(i).intValue());
         }
     }
@@ -92,7 +92,7 @@ public class AlgorithmTest {
 
         List<Integer> result = algorithm.sort(articles);
 
-        for(int i = 0; i<result.size(); i++) {
+        for(int i = 0; i < result.size(); i++) {
             Assert.assertEquals(i, result.get(i).intValue());
         }
     }
@@ -118,7 +118,7 @@ public class AlgorithmTest {
 
         List<Integer> result = algorithm.sort(articles);
 
-        for(int i = 0; i<result.size(); i++) {
+        for(int i = 0; i < result.size(); i++) {
             Assert.assertEquals(i, result.get(i).intValue());
         }
     }
@@ -150,7 +150,7 @@ public class AlgorithmTest {
 
         List<Integer> result = algorithm.sort(articles);
 
-        for(int i = 0; i<result.size(); i++) {
+        for(int i = 0; i < result.size(); i++) {
 
             Assert.assertEquals(i, result.get(i).intValue());
         }
@@ -189,7 +189,7 @@ public class AlgorithmTest {
 
         List<Integer> result = algorithm.sort(articles);
 
-        for(int i = 0; i<result.size(); i++) {
+        for(int i = 0; i < result.size(); i++) {
 
             Assert.assertEquals(i, result.get(i).intValue());
         }
@@ -218,7 +218,7 @@ public class AlgorithmTest {
 
         List<Integer> result = algorithm.sort(articles);
 
-        for(int i = 0; i<result.size(); i++) {
+        for(int i = 0; i < result.size(); i++) {
 
             Assert.assertEquals(i, result.get(i).intValue());
         }
