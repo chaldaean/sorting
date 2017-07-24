@@ -11,8 +11,8 @@ import java.util.*;
 
 @RunWith(JUnit4.class)
 public class AlgorithmTest {
-    Algorithm algorithm = new Algorithm();
-    List<Object> articles = new ArrayList<>();
+    private Algorithm algorithm = new Algorithm();
+    private List<Object> articles = new ArrayList<>();
 
     @Before
     public void setUp() {
@@ -101,18 +101,20 @@ public class AlgorithmTest {
     @Test
     public void sort_one_areas_with_three_columns_different_size_large_first() {
         articles.add(0);
+        articles.add(1);
+        articles.add(2);
 
         Map<String, List<?>> area = new LinkedHashMap<>();
-        List<Integer> col1 = Arrays.asList(1, 4, 6, 8, 9, 10);
-        List<Integer> col2 = Collections.singletonList(2);
-        List<Integer> col3 = Arrays.asList(3, 5, 7);
+        List<Integer> col1 = Arrays.asList(3, 6, 8, 10, 11, 12);
+        List<Integer> col2 = Collections.singletonList(4);
+        List<Integer> col3 = Arrays.asList(5, 7, 9);
         area.put("col1", col1);
         area.put("col2", col2);
         area.put("col3", col3);
 
         articles.add(area);
-        articles.add(11);
-        articles.add(12);
+        articles.add(13);
+        articles.add(14);
 
         List<Integer> result = algorithm.sort(articles);
 
@@ -121,7 +123,7 @@ public class AlgorithmTest {
         }
     }
 
-    /*@Test
+    @Test
     public void sort_two_areas_with_three_and_two_columns_different_size() {
         articles.add(0);
 
@@ -152,6 +154,45 @@ public class AlgorithmTest {
 
             Assert.assertEquals(i, result.get(i).intValue());
         }
-    }*/
+    }
+
+    @Test
+    public void sort_two_areas_with_three_and_two_columns_different_size_and_three_article_areas_different_size() {
+        articles.add(0);
+        articles.add(1);
+        articles.add(2);
+
+        Map<String, List<?>> area0 = new LinkedHashMap<>();
+        List<Integer> area0_col1 = Collections.singletonList(3);
+        List<Integer> area0_col2 = Arrays.asList(4, 6, 8, 9);
+        List<Integer> area0_col3 = Arrays.asList(5, 7);
+        area0.put("col1", area0_col1);
+        area0.put("col2", area0_col2);
+        area0.put("col3", area0_col3);
+
+        articles.add(area0);
+        articles.add(10);
+        articles.add(11);
+        articles.add(12);
+        articles.add(13);
+
+        Map<String, List<?>> area1 = new LinkedHashMap<>();
+        List<Integer> area1_col1 = Arrays.asList(14, 16, 17);
+        List<Integer> area1_col2 = Collections.singletonList(15);
+
+        area1.put("col1", area1_col1);
+        area1.put("col2", area1_col2);
+        articles.add(area1);
+
+        articles.add(18);
+        articles.add(19);
+
+        List<Integer> result = algorithm.sort(articles);
+
+        for(int i = 0; i<result.size(); i++) {
+
+            Assert.assertEquals(i, result.get(i).intValue());
+        }
+    }
 
 }
