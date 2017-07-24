@@ -195,4 +195,34 @@ public class AlgorithmTest {
         }
     }
 
+    @Test
+    public void sort_one_area_with_embedded_area() {
+        articles.add(0);
+        articles.add(1);
+
+        Map<String, List<?>> area0 = new LinkedHashMap<>();
+        List<Integer> area0_col1 = Arrays.asList(2, 5, 8);
+
+        Map<String, List<?>> area1_area2 = new LinkedHashMap<>();
+        List<Integer> area1_area2_col1 = Arrays.asList(3, 6);
+        List<Integer> area1_area2_col2 = Arrays.asList(4, 7);
+
+        area1_area2.put("col1", area1_area2_col1);
+        area1_area2.put("col2", area1_area2_col2);
+        area0.put("col1", area0_col1);
+        area0.put("col2", Arrays.asList(area1_area2));
+
+        articles.add(area0);
+        articles.add(9);
+        articles.add(10);
+
+        List<Integer> result = algorithm.sort(articles);
+
+        for(int i = 0; i<result.size(); i++) {
+
+            Assert.assertEquals(i, result.get(i).intValue());
+        }
+    }
+
+
 }
