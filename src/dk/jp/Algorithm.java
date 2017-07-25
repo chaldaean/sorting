@@ -6,6 +6,7 @@ public class Algorithm {
     static Integer[][] matrix = new Integer[60][60];
     static Integer row = 0;
     static Integer column = 0;
+    static int maxRows = 0;
 
     public List<Integer> sort(List<Object> articles) {
         List<Integer> result = new ArrayList<>();
@@ -16,12 +17,13 @@ public class Algorithm {
             } else {
                 row++;
                 column = 0;
-                iterate(el);
+                iterate(el, true);
             }
         }
-        for(int i = 0; i < 50; i++) {
+
+        for(int i = 0; i < 60; i++) {
             System.out.println("[" + (matrix[i] != null ? matrix[i] : "-") + "]");
-            for(int j = 0; j < 50; j++) {
+            for(int j = 0; j < 60; j++) {
                 System.out.print("[" + (matrix[i][j] != null ? matrix[i][j] : "-") + "]");
                 if(matrix[i][j] != null) {
                     result.add(matrix[i][j]);
@@ -31,16 +33,15 @@ public class Algorithm {
         return result;
     }
 
-    private void iterate(Object el) {
+    private void iterate(Object el, boolean end) {
         LinkedHashMap<String, List<?>> area = (LinkedHashMap) el;
         int arrSize = 0;
-        int maxRows = 0;
+        maxRows = 0;
         for(Object o : area.keySet()) {
             arrSize++;
             List<?> colList = area.get(o);
 
             int tmpRow = row;
-
             for(Object item : colList) {
                 if(item instanceof Integer) {
                     matrix[tmpRow][column] = (Integer) item;
@@ -49,13 +50,16 @@ public class Algorithm {
                     }
                     tmpRow++;
                 } else {
-                    iterate(item);
+                    iterate(item, (arrSize == area.keySet().size()));
                 }
             }
             column++;
-            if(arrSize == area.keySet().size()) {
+            if((arrSize == area.keySet().size()) && end) {
                 column = 0;
+
                 row = row + maxRows;
+                System.out.println("_________________________________row: " + row);
+                System.out.println("_________________________________maxRows: " + maxRows);
             }
         }
     }
