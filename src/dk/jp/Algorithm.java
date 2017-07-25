@@ -56,10 +56,7 @@ public class Algorithm {
             column++;
             if((arrSize == area.keySet().size()) && end) {
                 column = 0;
-
                 row = row + maxRows;
-                System.out.println("_________________________________row: " + row);
-                System.out.println("_________________________________maxRows: " + maxRows);
             }
         }
     }
