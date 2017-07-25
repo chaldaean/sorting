@@ -17,6 +17,9 @@ public class AlgorithmTest {
     @Before
     public void setUp() {
         articles.clear();
+        Algorithm.matrix = new Integer[60][60];
+        Algorithm.row = 0;
+        Algorithm.column = 0;
     }
 
     @Test
@@ -224,5 +227,91 @@ public class AlgorithmTest {
         }
     }
 
+    @Test
+    public void sort_one_area_with_two_embedded_areas_different_size() {
+        articles.add(0);
+        articles.add(1);
+
+        Map<String, List<?>> area0 = new LinkedHashMap<>();
+        List<Integer> area0_col1 = Arrays.asList(2, 5, 8, 11, 13, 15, 16, 17);
+
+        Map<String, List<?>> area1_area2 = new LinkedHashMap<>();
+        List<Integer> area1_area2_col1 = Arrays.asList(3, 6, 9, 12, 14);
+        List<Integer> area1_area2_col2 = Arrays.asList(4, 7, 10);
+
+        area1_area2.put("col1", area1_area2_col1);
+        area1_area2.put("col2", area1_area2_col2);
+        area0.put("col1", area0_col1);
+        area0.put("col2", Arrays.asList(area1_area2));
+
+        articles.add(area0);
+        articles.add(18);
+        articles.add(19);
+
+        Map<String, List<?>> area1 = new LinkedHashMap<>();
+        List<Integer> area1_col1 = Arrays.asList(20, 25);
+        List<Integer> area1_col2 = Arrays.asList(21, 26, 30, 33);
+        List<Integer> area1_col3 = Arrays.asList(22, 27, 31);
+
+        Map<String, List<?>> area1_col4 = new LinkedHashMap<>();
+        List<Integer> area1_col4_col1 = Arrays.asList(23, 28, 32, 34, 35);
+        List<Integer> area1_col4_col2 = Arrays.asList(24, 29);
+
+        area1_col4.put("col1", area1_col4_col1);
+        area1_col4.put("col2", area1_col4_col2);
+
+        area1.put("col1", area1_col1);
+        area1.put("col2", area1_col2);
+        area1.put("col3", area1_col3);
+        area1.put("col4", Arrays.asList(area1_col4));
+
+        articles.add(area1);
+        articles.add(36);
+        articles.add(37);
+
+        List<Integer> result = algorithm.sort(articles);
+
+        for(int i = 0; i < result.size(); i++) {
+
+            Assert.assertEquals(i, result.get(i).intValue());
+        }
+    }
+
+
+    @Test
+    public void sort_one_area_with_three_embedded_areas_different_size() {
+        articles.add(0);
+        articles.add(1);
+        articles.add(2);
+
+        Map<String, List<?>> area2 = new LinkedHashMap<>();
+        List<Integer> area2_col1 = Arrays.asList(5);
+        List<Integer> area2_col2 = Arrays.asList(6, 9, 11, 12);
+        area2.put("col1", area2_col1);
+        area2.put("col2", area2_col2);
+
+        Map<String, List<?>> area1 = new LinkedHashMap<>();
+        List<Integer> area1_col1 = Arrays.asList(4, 8, 10);
+        List<?> area1_col2 = Arrays.asList(area2);
+        area1.put("col1", area1_col1);
+        area1.put("col2", area1_col2);
+
+        Map<String, List<?>> area0 = new LinkedHashMap<>();
+        List<Integer> area0_col1 = Arrays.asList(3, 7);
+        List<?> area0_col2 = Arrays.asList(area1);
+
+        area0.put("col1", area0_col1);
+        area0.put("col2", area0_col2);
+
+        articles.add(area0);
+        articles.add(13);
+        articles.add(14);
+
+        List<Integer> result = algorithm.sort(articles);
+
+        for(int i = 0; i < result.size(); i++) {
+            Assert.assertEquals(i, result.get(i).intValue());
+        }
+    }
 
 }
