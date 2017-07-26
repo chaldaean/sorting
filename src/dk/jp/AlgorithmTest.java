@@ -17,7 +17,7 @@ public class AlgorithmTest {
     @Before
     public void setUp() {
         articles.clear();
-        Algorithm.matrix = new Integer[60][60];
+        Algorithm.matrix = new Integer[20][20];
         Algorithm.row = 0;
         Algorithm.column = 0;
     }
@@ -394,6 +394,74 @@ public class AlgorithmTest {
         area3.put("col1", area3_col1);
         area3.put("col2", area3_col2);
         area3.put("col3", area3_col3);
+
+        articles.add(area3);
+        articles.add(28);
+        articles.add(29);
+
+
+        List<Integer> result = algorithm.sort(articles);
+
+        for(int i = 0; i < result.size(); i++) {
+            Assert.assertEquals(i, result.get(i).intValue());
+        }
+    }
+
+    @Test
+    public void last() {
+        articles.add(0);
+        articles.add(1);
+
+        Map<String, List<?>> area2 = new LinkedHashMap<>();
+        List<Integer> area2_col1 = Arrays.asList(2, 6, 9,11);
+        List<Integer> area2_col2 = Arrays.asList(3);
+        area2.put("col1", area2_col1);
+        area2.put("col2", area2_col2);
+
+        Map<String, List<?>> area1 = new LinkedHashMap<>();
+        List<?> area1_col1 = Arrays.asList(area2);
+        List<?> area1_col2 = Arrays.asList(4, 7, 10);
+        area1.put("col1", area1_col1);
+        area1.put("col2", area1_col2);
+
+        Map<String, List<?>> area0 = new LinkedHashMap<>();
+        List<?> area0_col1 = Arrays.asList(area1);
+        List<?> area0_col2 = Arrays.asList(5, 8);
+
+        area0.put("col1", area0_col1);
+        area0.put("col2", area0_col2);
+
+        articles.add(area0);
+        articles.add(12);
+        articles.add(13);
+
+        Map<String, List<?>> area6 = new LinkedHashMap<>();
+        List<Integer> area6_col1 = Arrays.asList(17, 23, 26);
+        List<Integer> area6_col2 = Arrays.asList(18);
+        List<Integer> area6_col3 = Arrays.asList(19, 24);
+        area6.put("col1", area6_col1);
+        area6.put("col2", area6_col2);
+        area6.put("col3", area6_col3);
+
+        Map<String, List<?>> area5 = new LinkedHashMap<>();
+        List<Integer> area5_col1 = Arrays.asList(15, 21);
+        area5.put("col1", area5_col1);
+
+        Map<String, List<?>> area4 = new LinkedHashMap<>();
+        List<Integer> area4_col1 = Arrays.asList(14);
+        List<?> area4_col2 = Arrays.asList(area5);
+        area4.put("col1", area4_col1);
+        area4.put("col2", area4_col2);
+
+        Map<String, List<?>> area3 = new LinkedHashMap<>();
+        List<?> area3_col1 = Arrays.asList(area4);
+        List<Integer> area3_col2 = Arrays.asList(16, 22, 25, 27);
+        List<?> area3_col3 = Arrays.asList(area6);
+        List<?> area3_col4 = Arrays.asList(20);
+        area3.put("col1", area3_col1);
+        area3.put("col2", area3_col2);
+        area3.put("col3", area3_col3);
+        area3.put("col4", area3_col4);
 
         articles.add(area3);
         articles.add(28);

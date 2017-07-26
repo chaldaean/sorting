@@ -3,7 +3,7 @@ package dk.jp;
 import java.util.*;
 
 public class Algorithm {
-    static Integer[][] matrix = new Integer[60][60];
+    static Integer[][] matrix = new Integer[20][20];
     static Integer row = 0;
     static Integer column = 0;
     static int maxRows = 0;
@@ -18,35 +18,40 @@ public class Algorithm {
                 row++;
                 column = 0;
                 iterate(el, true);
+                column = 0;
+                row = row + maxRows;
+                maxRows = 0;
             }
         }
 
-        for(int i = 0; i < 60; i++) {
+        for(int i = 0; i < 20; i++) {
             System.out.println("[" + (matrix[i] != null ? matrix[i] : "-") + "]");
-            for(int j = 0; j < 60; j++) {
+            for(int j = 0; j < 20; j++) {
                 System.out.print("[" + (matrix[i][j] != null ? matrix[i][j] : "-") + "]");
                 if(matrix[i][j] != null) {
                     result.add(matrix[i][j]);
                 }
             }
         }
+        System.out.println("\n\n");
         return result;
     }
 
     private void iterate(Object el, boolean end) {
         LinkedHashMap<String, List<?>> area = (LinkedHashMap) el;
         int arrSize = 0;
-        maxRows = 0;
         for(Object o : area.keySet()) {
             arrSize++;
             List<?> colList = area.get(o);
 
             int tmpRow = row;
+            int tmpIndex = 0;
             for(Object item : colList) {
                 if(item instanceof Integer) {
                     matrix[tmpRow][column] = (Integer) item;
-                    if(maxRows < tmpRow) {
-                        maxRows = tmpRow;
+                    tmpIndex++;
+                    if(maxRows < tmpIndex) {
+                        maxRows = tmpIndex;
                     }
                     tmpRow++;
                 } else {
@@ -56,7 +61,6 @@ public class Algorithm {
             column++;
             if((arrSize == area.keySet().size()) && end) {
                 column = 0;
-                row = row + maxRows;
             }
         }
     }
