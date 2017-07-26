@@ -17,7 +17,7 @@ public class Algorithm {
             } else {
                 row++;
                 column = 0;
-                iterate(el, true);
+                iterate(el);
                 column = 0;
                 row = row + maxRows;
                 maxRows = 0;
@@ -37,11 +37,9 @@ public class Algorithm {
         return result;
     }
 
-    private void iterate(Object el, boolean end) {
+    private void iterate(Object el) {
         LinkedHashMap<String, List<?>> area = (LinkedHashMap) el;
-        int arrSize = 0;
         for(Object o : area.keySet()) {
-            arrSize++;
             List<?> colList = area.get(o);
 
             int tmpRow = row;
@@ -55,13 +53,10 @@ public class Algorithm {
                     }
                     tmpRow++;
                 } else {
-                    iterate(item, (arrSize == area.keySet().size()));
+                    iterate(item);
                 }
             }
             column++;
-            if((arrSize == area.keySet().size()) && end) {
-                column = 0;
-            }
         }
     }
 }

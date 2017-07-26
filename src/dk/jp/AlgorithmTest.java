@@ -20,6 +20,7 @@ public class AlgorithmTest {
         Algorithm.matrix = new Integer[20][20];
         Algorithm.row = 0;
         Algorithm.column = 0;
+        Algorithm.maxRows = 0;
     }
 
     @Test
