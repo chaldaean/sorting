@@ -3,10 +3,10 @@ package dk.jp;
 import java.util.*;
 
 public class Algorithm {
-    static Integer[][] matrix = new Integer[20][20];
-    static Integer row = 0;
-    static Integer column = 0;
-    static int maxRows = 0;
+    private Integer[][] matrix = new Integer[20][20];
+    private Integer row = 0;
+    private Integer column = 0;
+    private int maxRows = 0;
 
     public List<Integer> sort(List<Object> articles) {
         List<Integer> result = new ArrayList<>();
@@ -58,5 +58,12 @@ public class Algorithm {
             }
             column++;
         }
+    }
+
+    public void clear() {
+        matrix = new Integer[40][40];
+        row = 0;
+        column = 0;
+        maxRows = 0;
     }
 }
